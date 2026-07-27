@@ -24,24 +24,24 @@ export function Sidebar() {
     <aside className="w-full max-w-[340px] xl:max-w-[380px] shrink-0 pt-8 lg:pt-28 mx-auto lg:mx-0">
       <div className="sticky top-8 z-10">
         <div className="sidebar-card p-6 pb-8 relative overflow-visible">
-          {/* Dashed orange curve — spans entire card like the reference */}
-          <svg
-            className="absolute -top-8 -left-8 z-30 pointer-events-none"
-            width="calc(100% + 64px)"
-            height="calc(100% + 64px)"
-            style={{ width: 'calc(100% + 64px)', height: 'calc(100% + 64px)' }}
-            viewBox="0 0 420 700"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M 350 -20 C 250 -10, 100 10, 50 100 C 0 190, 10 280, 30 370 C 50 460, 90 520, 120 600"
-              stroke="#F97316"
-              strokeWidth="3.5"
-              strokeDasharray="16 12"
-              strokeLinecap="round"
-            />
-          </svg>
+          {/* Mobile-only dashed curve and flame overlay */}
+          <div className="lg:hidden absolute top-0 left-0 w-32 h-32 z-30 pointer-events-none overflow-visible">
+            <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible" fill="none">
+              <path
+                d="M 80,-10 C 60,30 30,60 -10,80"
+                stroke="#F97316"
+                strokeWidth="2.5"
+                strokeDasharray="6 6"
+                strokeLinecap="round"
+              />
+              <g transform="translate(5, 55)">
+                <circle cx="12" cy="12" r="12" fill="#F97316" />
+                <svg x="4" y="4" width="16" height="16" viewBox="0 0 24 24" fill="white" stroke="white" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+                </svg>
+              </g>
+            </svg>
+          </div>
 
           {/* Profile photo with orange background */}
           <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden mb-6">
@@ -61,8 +61,8 @@ export function Sidebar() {
             {PROFILE.name}
           </h2>
 
-          {/* Fire emoji */}
-          <div className="flex justify-center mb-4">
+          {/* Fire emoji (hidden on mobile, replaced by overlay) */}
+          <div className="hidden lg:flex justify-center mb-4">
             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-sawad-accent/10 text-sawad-accent text-sm">
               🔥
             </span>
