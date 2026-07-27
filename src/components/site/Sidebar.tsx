@@ -24,17 +24,36 @@ export function Sidebar() {
     <aside className="hidden lg:block w-full max-w-[340px] xl:max-w-[380px] shrink-0 pt-28">
       <div className="sticky top-8">
         <div className="sidebar-card p-6 pb-8">
-          {/* Profile photo with orange background */}
-          <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden mb-6">
-            <div className="absolute inset-0 bg-gradient-to-br from-sawad-accent to-sawad-coral" />
-            <Image
-              src={PROFILE.heroImage}
-              alt={PROFILE.name}
-              fill
-              priority
-              sizes="340px"
-              className="object-cover relative z-10 mix-blend-multiply grayscale contrast-125 brightness-110"
-            />
+          {/* Profile photo with orange background + dashed curve overlay */}
+          <div className="relative w-full aspect-[4/5] rounded-2xl overflow-visible mb-6">
+            {/* Image container */}
+            <div className="relative w-full h-full rounded-2xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-sawad-accent to-sawad-coral" />
+              <Image
+                src={PROFILE.heroImage}
+                alt={PROFILE.name}
+                fill
+                priority
+                sizes="340px"
+                className="object-cover relative z-10 mix-blend-multiply grayscale contrast-125 brightness-110"
+              />
+            </div>
+
+            {/* Dashed orange curve overlay */}
+            <svg
+              className="absolute -top-6 -left-6 w-[calc(100%+48px)] h-[calc(100%+80px)] z-20 pointer-events-none"
+              viewBox="0 0 400 520"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 320 -10 C 200 -10, 40 30, 30 150 C 20 270, 20 380, 60 520"
+                stroke="#F97316"
+                strokeWidth="3.5"
+                strokeDasharray="14 10"
+                strokeLinecap="round"
+              />
+            </svg>
           </div>
 
           {/* Name */}
