@@ -181,35 +181,69 @@ export const CERTIFICATES: Certificate[] = [
   },
 ];
 
+export interface ToolItem {
+  name: string;
+  description: string;
+}
+
 export interface ToolGroup {
   category: string;
-  items: string[];
+  items: ToolItem[];
 }
 
 export const TOOLS: ToolGroup[] = [
   { 
     category: 'Languages', 
-    items: ['C', 'C++', 'Python', 'JavaScript', 'TypeScript']
+    items: [
+      { name: 'C', description: 'Low-level systems programming & algorithms' },
+      { name: 'C++', description: 'Performance-critical applications & OOP' },
+      { name: 'Python', description: 'Backend development, AI/ML & scripting' },
+      { name: 'JavaScript', description: 'Interactive web apps & DOM manipulation' },
+      { name: 'TypeScript', description: 'Type-safe JavaScript for scalable codebases' },
+    ]
   },
   { 
     category: 'Frontend', 
-    items: ['React', 'Next.js', 'Tailwind CSS', 'HTMX', 'Alpine.js']
+    items: [
+      { name: 'React', description: 'Component-based UI library for SPAs' },
+      { name: 'Next.js', description: 'Full-stack React framework with SSR & SSG' },
+      { name: 'Tailwind CSS', description: 'Utility-first CSS for rapid UI styling' },
+      { name: 'HTMX', description: 'Server-driven interactivity without heavy JS' },
+      { name: 'Alpine.js', description: 'Lightweight reactivity for HTML templates' },
+    ]
   },
   { 
     category: 'Backend', 
-    items: ['Flask', 'Django']
+    items: [
+      { name: 'Flask', description: 'Lightweight Python micro-framework for APIs' },
+      { name: 'Django', description: 'Batteries-included Python web framework' },
+    ]
   },
   { 
     category: 'Databases', 
-    items: ['MySQL', 'SQLite']
+    items: [
+      { name: 'MySQL', description: 'Relational database for structured data' },
+      { name: 'SQLite', description: 'Embedded database for lightweight apps' },
+    ]
   },
   { 
     category: 'AI / ML', 
-    items: ['Scikit-Learn', 'TensorFlow']
+    items: [
+      { name: 'Scikit-Learn', description: 'Classical ML algorithms & data pipelines' },
+      { name: 'TensorFlow', description: 'Deep learning & neural network training' },
+    ]
   },
   { 
     category: 'Tools & Platforms', 
-    items: ['VS Code', 'PyCharm', 'GitHub', 'Jira', 'n8n', 'Cursor', 'Docker']
+    items: [
+      { name: 'VS Code', description: 'Primary code editor & debugging environment' },
+      { name: 'PyCharm', description: 'Python-focused IDE for complex projects' },
+      { name: 'GitHub', description: 'Version control & open-source collaboration' },
+      { name: 'Jira', description: 'Agile project management & issue tracking' },
+      { name: 'n8n', description: 'Workflow automation & API integrations' },
+      { name: 'Cursor', description: 'AI-powered code editor for fast development' },
+      { name: 'Docker', description: 'Containerization for consistent deployments' },
+    ]
   },
 ];
 
