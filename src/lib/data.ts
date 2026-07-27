@@ -195,54 +195,54 @@ export const TOOLS: ToolGroup[] = [
   { 
     category: 'Languages', 
     items: [
-      { name: 'C', description: 'Low-level systems programming & algorithms' },
-      { name: 'C++', description: 'Performance-critical applications & OOP' },
-      { name: 'Python', description: 'Backend development, AI/ML & scripting' },
-      { name: 'JavaScript', description: 'Interactive web apps & DOM manipulation' },
-      { name: 'TypeScript', description: 'Type-safe JavaScript for scalable codebases' },
+      { name: 'C', description: 'Systems Programming' },
+      { name: 'C++', description: 'Performance & OOP' },
+      { name: 'Python', description: 'AI/ML & Backend' },
+      { name: 'JavaScript', description: 'Web Interactivity' },
+      { name: 'TypeScript', description: 'Type-safe JS' },
     ]
   },
   { 
     category: 'Frontend', 
     items: [
-      { name: 'React', description: 'Component-based UI library for SPAs' },
-      { name: 'Next.js', description: 'Full-stack React framework with SSR & SSG' },
-      { name: 'Tailwind CSS', description: 'Utility-first CSS for rapid UI styling' },
-      { name: 'HTMX', description: 'Server-driven interactivity without heavy JS' },
-      { name: 'Alpine.js', description: 'Lightweight reactivity for HTML templates' },
+      { name: 'React', description: 'UI Components' },
+      { name: 'Next.js', description: 'Full-stack React' },
+      { name: 'Tailwind CSS', description: 'Utility-first CSS' },
+      { name: 'HTMX', description: 'Server-driven UI' },
+      { name: 'Alpine.js', description: 'Lightweight Reactivity' },
     ]
   },
   { 
     category: 'Backend', 
     items: [
-      { name: 'Flask', description: 'Lightweight Python micro-framework for APIs' },
-      { name: 'Django', description: 'Batteries-included Python web framework' },
+      { name: 'Flask', description: 'Python Micro-framework' },
+      { name: 'Django', description: 'Python Web Framework' },
     ]
   },
   { 
     category: 'Databases', 
     items: [
-      { name: 'MySQL', description: 'Relational database for structured data' },
-      { name: 'SQLite', description: 'Embedded database for lightweight apps' },
+      { name: 'MySQL', description: 'Relational DB' },
+      { name: 'SQLite', description: 'Embedded DB' },
     ]
   },
   { 
     category: 'AI / ML', 
     items: [
-      { name: 'Scikit-Learn', description: 'Classical ML algorithms & data pipelines' },
-      { name: 'TensorFlow', description: 'Deep learning & neural network training' },
+      { name: 'Scikit-Learn', description: 'Classical ML' },
+      { name: 'TensorFlow', description: 'Deep Learning' },
     ]
   },
   { 
     category: 'Tools & Platforms', 
     items: [
-      { name: 'VS Code', description: 'Primary code editor & debugging environment' },
-      { name: 'PyCharm', description: 'Python-focused IDE for complex projects' },
-      { name: 'GitHub', description: 'Version control & open-source collaboration' },
-      { name: 'Jira', description: 'Agile project management & issue tracking' },
-      { name: 'n8n', description: 'Workflow automation & API integrations' },
-      { name: 'Cursor', description: 'AI-powered code editor for fast development' },
-      { name: 'Docker', description: 'Containerization for consistent deployments' },
+      { name: 'VS Code', description: 'Code Editor' },
+      { name: 'PyCharm', description: 'Python IDE' },
+      { name: 'GitHub', description: 'Version Control' },
+      { name: 'Jira', description: 'Project Management' },
+      { name: 'n8n', description: 'Workflow Automation' },
+      { name: 'Cursor', description: 'AI Code Editor' },
+      { name: 'Docker', description: 'Containerization' },
     ]
   },
 ];
