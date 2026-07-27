@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { PROFILE } from '@/lib/data';
 import { useReveal } from '@/lib/animations';
+import { Download } from 'lucide-react';
 
 export function Hero() {
   const { revealVariants, containerVariants } = useReveal();
@@ -50,6 +51,17 @@ export function Hero() {
           — Steve Jobs
         </footer>
       </motion.blockquote>
+
+      <motion.div variants={revealVariants}>
+        <a
+          href={PROFILE.cvUrl || '#'}
+          download
+          className="inline-flex items-center gap-2 px-6 py-3 bg-sawad-accent text-white rounded-full font-medium hover:bg-sawad-accent/90 transition-colors"
+        >
+          <Download size={18} />
+          <span>Download CV</span>
+        </a>
+      </motion.div>
     </motion.section>
   );
 }
