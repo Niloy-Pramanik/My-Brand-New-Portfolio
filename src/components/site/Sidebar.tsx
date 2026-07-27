@@ -24,7 +24,7 @@ export function Sidebar() {
     <aside className="w-full max-w-[340px] xl:max-w-[380px] shrink-0 pt-8 lg:pt-28 mx-auto lg:mx-0">
       <div className="sticky top-8 z-10">
         <div className="sidebar-card p-6 pb-8 relative overflow-visible">
-          {/* Desktop-only dashed curve and flame overlay */}
+          {/* Desktop-only dashed curve overlay */}
           <div className="hidden lg:block absolute top-0 left-0 w-32 h-32 z-30 pointer-events-none overflow-visible">
             <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible" fill="none">
               <path
@@ -34,12 +34,6 @@ export function Sidebar() {
                 strokeDasharray="6 6"
                 strokeLinecap="round"
               />
-              <g transform="translate(5, 55)">
-                <circle cx="12" cy="12" r="12" fill="#F97316" />
-                <svg x="4" y="4" width="16" height="16" viewBox="0 0 24 24" fill="white" stroke="white" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
-                </svg>
-              </g>
             </svg>
           </div>
 
