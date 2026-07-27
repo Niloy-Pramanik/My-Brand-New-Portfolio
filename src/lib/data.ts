@@ -189,7 +189,7 @@ export interface ToolGroup {
 export const TOOLS: ToolGroup[] = [
   { 
     category: 'Languages', 
-    items: ['C', 'C++', 'Python', 'JavaScript']
+    items: ['C', 'C++', 'Python', 'JavaScript', 'TypeScript']
   },
   { 
     category: 'Frontend', 
