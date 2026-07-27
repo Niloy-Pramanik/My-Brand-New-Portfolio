@@ -23,37 +23,37 @@ export function Sidebar() {
   return (
     <aside className="hidden lg:block w-full max-w-[340px] xl:max-w-[380px] shrink-0 pt-28">
       <div className="sticky top-8">
-        <div className="sidebar-card p-6 pb-8">
-          {/* Profile photo with orange background + dashed curve overlay */}
-          <div className="relative w-full aspect-[4/5] rounded-2xl overflow-visible mb-6">
-            {/* Image container */}
-            <div className="relative w-full h-full rounded-2xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-sawad-accent to-sawad-coral" />
-              <Image
-                src={PROFILE.heroImage}
-                alt={PROFILE.name}
-                fill
-                priority
-                sizes="340px"
-                className="object-cover relative z-10 mix-blend-multiply grayscale contrast-125 brightness-110"
-              />
-            </div>
+        <div className="sidebar-card p-6 pb-8 relative overflow-visible">
+          {/* Dashed orange curve — spans entire card like the reference */}
+          <svg
+            className="absolute -top-8 -left-8 z-30 pointer-events-none"
+            width="calc(100% + 64px)"
+            height="calc(100% + 64px)"
+            style={{ width: 'calc(100% + 64px)', height: 'calc(100% + 64px)' }}
+            viewBox="0 0 420 700"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 350 -20 C 250 -10, 100 10, 50 100 C 0 190, 10 280, 30 370 C 50 460, 90 520, 120 600"
+              stroke="#F97316"
+              strokeWidth="3.5"
+              strokeDasharray="16 12"
+              strokeLinecap="round"
+            />
+          </svg>
 
-            {/* Dashed orange curve overlay */}
-            <svg
-              className="absolute -top-6 -left-6 w-[calc(100%+48px)] h-[calc(100%+80px)] z-20 pointer-events-none"
-              viewBox="0 0 400 520"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M 320 -10 C 200 -10, 40 30, 30 150 C 20 270, 20 380, 60 520"
-                stroke="#F97316"
-                strokeWidth="3.5"
-                strokeDasharray="14 10"
-                strokeLinecap="round"
-              />
-            </svg>
+          {/* Profile photo with orange background */}
+          <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden mb-6">
+            <div className="absolute inset-0 bg-gradient-to-br from-sawad-accent to-sawad-coral" />
+            <Image
+              src={PROFILE.heroImage}
+              alt={PROFILE.name}
+              fill
+              priority
+              sizes="340px"
+              className="object-cover relative z-10 mix-blend-multiply grayscale contrast-125 brightness-110"
+            />
           </div>
 
           {/* Name */}
