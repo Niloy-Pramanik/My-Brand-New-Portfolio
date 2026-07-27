@@ -54,8 +54,8 @@ export function Navbar() {
       </nav>
 
       {/* Mobile: bottom-fixed icon bar */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-sawad-bg/90 backdrop-blur-xl border-t border-sawad-border overflow-x-auto">
-        <div className="flex items-center justify-start min-w-max py-3 px-4 gap-6">
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-sawad-bg/90 backdrop-blur-xl border-t border-sawad-border">
+        <div className="flex items-center justify-around py-3 px-2">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isActive =
