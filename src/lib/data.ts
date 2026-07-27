@@ -89,7 +89,7 @@ export interface Achievement {
 export const ACHIEVEMENTS: Achievement[] = [
   {
     id: '01',
-    title: 'SWE 1st Runner-Up',
+    title: 'SWE Lab 1st Runner-Up',
     badge: '1st Runner-Up',
     description:
       'Excellence in software engineering and innovative problem-solving at the CSE Project Show, United International University.',
@@ -105,10 +105,10 @@ export const ACHIEVEMENTS: Achievement[] = [
   },
   {
     id: '03',
-    title: 'Hackathon Winner',
-    badge: 'Judges Choice',
+    title: 'Hackathon Participant',
+    badge: 'Participant',
     description:
-      'First place winner in a 48-hour hackathon competition for innovative solution development.',
+      'Participated in a 48-hour hackathon competition for innovative solution development.',
     image: '/Hackathon.jpg',
   },
 ];
@@ -125,7 +125,7 @@ export interface Certificate {
 export const CERTIFICATES: Certificate[] = [
   {
     id: 1,
-    title: 'SWE 1st Runner-Up',
+    title: 'SWE Lab 1st Runner-Up',
     issuer: 'United International University',
     date: 'CSE Project Show',
     image: '/1st%20runner%20up_certificate.JPG',
