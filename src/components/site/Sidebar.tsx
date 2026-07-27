@@ -24,18 +24,7 @@ export function Sidebar() {
     <aside className="w-full max-w-[340px] xl:max-w-[380px] shrink-0 pt-8 lg:pt-28 mx-auto lg:mx-0">
       <div className="sticky top-8 z-10">
         <div className="sidebar-card p-6 pb-8 relative overflow-visible">
-          {/* Dashed curve overlay (Desktop & Mobile) */}
-          <div className="absolute top-0 left-0 w-32 h-32 z-30 pointer-events-none overflow-visible">
-            <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible" fill="none">
-              <path
-                d="M 80,-10 C 60,30 30,60 -10,80"
-                stroke="#F97316"
-                strokeWidth="2.5"
-                strokeDasharray="6 6"
-                strokeLinecap="round"
-              />
-            </svg>
-          </div>
+
 
           {/* Profile photo with orange background */}
           <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden mb-6">
