@@ -24,8 +24,8 @@ export function Sidebar() {
     <aside className="w-full max-w-[340px] xl:max-w-[380px] shrink-0 pt-8 lg:pt-28 mx-auto lg:mx-0">
       <div className="sticky top-8 z-10">
         <div className="sidebar-card p-6 pb-8 relative overflow-visible">
-          {/* Mobile-only dashed curve and flame overlay */}
-          <div className="lg:hidden absolute top-0 left-0 w-32 h-32 z-30 pointer-events-none overflow-visible">
+          {/* Desktop-only dashed curve and flame overlay */}
+          <div className="hidden lg:block absolute top-0 left-0 w-32 h-32 z-30 pointer-events-none overflow-visible">
             <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible" fill="none">
               <path
                 d="M 80,-10 C 60,30 30,60 -10,80"
@@ -61,8 +61,8 @@ export function Sidebar() {
             {PROFILE.name}
           </h2>
 
-          {/* Fire emoji (hidden on mobile, replaced by overlay) */}
-          <div className="hidden lg:flex justify-center mb-4">
+          {/* Fire emoji (Mobile only, replaced by overlay on desktop) */}
+          <div className="flex lg:hidden justify-center mb-4">
             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-sawad-accent/10 text-sawad-accent text-sm">
               🔥
             </span>
