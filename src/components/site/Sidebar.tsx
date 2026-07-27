@@ -21,9 +21,28 @@ const socialIcons: Record<string, React.ReactNode> = {
 
 export function Sidebar() {
   return (
-    <aside className="hidden lg:block w-full max-w-[340px] xl:max-w-[380px] shrink-0 pt-28">
-      <div className="sticky top-8">
-        <div className="sidebar-card p-6 pb-8">
+    <aside className="w-full max-w-[340px] xl:max-w-[380px] shrink-0 pt-8 lg:pt-28 mx-auto lg:mx-0">
+      <div className="sticky top-8 z-10">
+        <div className="sidebar-card p-6 pb-8 relative overflow-visible">
+          {/* Dashed orange curve — spans entire card like the reference */}
+          <svg
+            className="absolute -top-8 -left-8 z-30 pointer-events-none"
+            width="calc(100% + 64px)"
+            height="calc(100% + 64px)"
+            style={{ width: 'calc(100% + 64px)', height: 'calc(100% + 64px)' }}
+            viewBox="0 0 420 700"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 350 -20 C 250 -10, 100 10, 50 100 C 0 190, 10 280, 30 370 C 50 460, 90 520, 120 600"
+              stroke="#F97316"
+              strokeWidth="3.5"
+              strokeDasharray="16 12"
+              strokeLinecap="round"
+            />
+          </svg>
+
           {/* Profile photo with orange background */}
           <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden mb-6">
             <div className="absolute inset-0 bg-gradient-to-br from-sawad-accent to-sawad-coral" />
@@ -72,43 +91,5 @@ export function Sidebar() {
         </div>
       </div>
     </aside>
-  );
-}
-
-/** Mobile-only profile strip shown at top on small screens */
-export function MobileProfileStrip() {
-  return (
-    <div className="lg:hidden px-5 pt-6 pb-4">
-      <div className="sidebar-card p-5 flex items-center gap-4">
-        <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-sawad-accent to-sawad-coral" />
-          <Image
-            src={PROFILE.heroImage}
-            alt={PROFILE.name}
-            fill
-            sizes="64px"
-            className="object-cover relative z-10 mix-blend-multiply grayscale contrast-125 brightness-110"
-          />
-        </div>
-        <div>
-          <h2 className="font-display font-black text-lg text-gray-900">{PROFILE.name}</h2>
-          <p className="text-xs text-gray-500">{PROFILE.role}</p>
-        </div>
-        <div className="ml-auto flex items-center gap-2">
-          {SOCIALS.slice(0, 3).map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target={s.href.startsWith('http') ? '_blank' : undefined}
-              rel="noopener noreferrer"
-              className="w-8 h-8 flex items-center justify-center rounded-full text-sawad-accent"
-              aria-label={s.label}
-            >
-              {socialIcons[s.label] || <Mail size={16} />}
-            </a>
-          ))}
-        </div>
-      </div>
-    </div>
   );
 }
