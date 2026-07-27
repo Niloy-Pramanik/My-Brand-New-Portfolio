@@ -20,7 +20,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://niloy-pramanik-portfolio.vercel.app'),
+  metadataBase: new URL('https://my-brand-new-portfolio.vercel.app'),
   title: 'Niloy Pramanik — Full-Stack Developer & AI Engineer',
   description:
     'Portfolio of Niloy Pramanik, a Computer Science student building full-stack web applications and exploring AI/ML, computer vision, and AI security.',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: 'Niloy Pramanik — Full-Stack Developer & AI Engineer',
     description:
       'Portfolio of Niloy Pramanik, a Computer Science student building full-stack web applications and exploring AI/ML, computer vision, and AI security.',
-    url: 'https://niloy-pramanik-portfolio.vercel.app',
+    url: 'https://my-brand-new-portfolio.vercel.app',
     siteName: 'Niloy Pramanik',
     images: ['/images/portfolio_demo.jpg'],
     type: 'website',
