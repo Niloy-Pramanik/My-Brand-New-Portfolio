@@ -68,21 +68,21 @@ export function ToolsGrid() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-x-8 gap-y-6">
             {group.items.map((item) => (
               <div
-                key={item}
+                key={item.name}
                 className="flex items-center gap-5 group cursor-pointer"
               >
                 {/* Icon Box */}
                 <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:-translate-y-1 shadow-lg group-hover:shadow-sawad-accent/20">
-                  {iconMap[item] || <Box color="#000000" size={24} />}
+                  {iconMap[item.name] || <Box color="#000000" size={24} />}
                 </div>
                 
                 {/* Text */}
                 <div>
                   <h3 className="font-display font-bold text-xl text-sawad-text tracking-tight group-hover:text-sawad-accent transition-colors">
-                    {item}
+                    {item.name}
                   </h3>
                   <p className="text-sm text-sawad-muted mt-1">
-                    {group.category.replace('Tools & Platforms', 'Platform')}
+                    {item.description}
                   </p>
                 </div>
               </div>
