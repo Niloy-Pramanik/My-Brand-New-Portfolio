@@ -89,32 +89,7 @@ body {
   overflow: visible;
 }
 
-.sidebar-card::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: -20px;
-  width: 100px;
-  height: 100px;
-  border: 2px dashed #e8622c;
-  border-radius: 50%;
-  opacity: 0.6;
-  pointer-events: none;
-}
 
-.sidebar-card::after {
-  content: '';
-  position: absolute;
-  top: 60px;
-  left: -40px;
-  width: 160px;
-  height: 200px;
-  border: 2px dashed #e8622c;
-  border-radius: 0 0 50% 50%;
-  opacity: 0.4;
-  pointer-events: none;
-  transform: rotate(-15deg);
-}
 
 /* ──── Icon nav pill ──── */
 .nav-pill {
