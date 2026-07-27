@@ -61,13 +61,6 @@ export function Sidebar() {
             {PROFILE.name}
           </h2>
 
-          {/* Fire emoji (Mobile only, replaced by overlay on desktop) */}
-          <div className="flex lg:hidden justify-center mb-4">
-            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-sawad-accent/10 text-sawad-accent text-sm">
-              🔥
-            </span>
-          </div>
-
           {/* Bio */}
           <p className="text-center text-sm text-gray-500 leading-relaxed mb-6 px-2">
             {PROFILE.tagline}
