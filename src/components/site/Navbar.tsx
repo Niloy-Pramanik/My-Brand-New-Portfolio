@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, FolderOpen, Wrench, MessageSquare, Microscope, Award, GraduationCap } from 'lucide-react';
+import { Home, FolderOpen, Wrench, MessageSquare, Microscope, Award, GraduationCap, Download } from 'lucide-react';
+import { PROFILE } from '@/lib/data';
 
 const NAV_ITEMS = [
   { href: '/', icon: Home, label: 'Home' },
@@ -49,6 +50,20 @@ export function Navbar() {
                 </Link>
               );
             })}
+
+            {/* Divider */}
+            <div className="w-[1px] h-5 bg-white/10 mx-2" />
+
+            {/* Download CV */}
+            <a
+              href={PROFILE.cvUrl || '#'}
+              download
+              className="nav-icon group flex items-center gap-1.5 text-sawad-accent hover:text-sawad-accent/80 transition-colors"
+              aria-label="Download CV"
+            >
+              <Download size={18} strokeWidth={2} />
+              <span className="text-xs font-semibold uppercase tracking-wider pr-1">CV</span>
+            </a>
           </div>
         </div>
       </nav>
@@ -69,7 +84,7 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex flex-col items-center gap-1 min-w-[48px] ${
+                className={`flex flex-col items-center gap-1 min-w-[44px] ${
                   isActive ? 'text-white' : 'text-sawad-muted'
                 }`}
                 aria-label={item.label}
@@ -79,6 +94,17 @@ export function Navbar() {
               </Link>
             );
           })}
+
+          {/* Download CV (Mobile) */}
+          <a
+            href={PROFILE.cvUrl || '#'}
+            download
+            className="flex flex-col items-center gap-1 min-w-[44px] text-sawad-accent"
+            aria-label="Download CV"
+          >
+            <Download size={20} strokeWidth={2} />
+            <span className="text-[10px] tracking-wide font-medium">CV</span>
+          </a>
         </div>
       </nav>
     </>
