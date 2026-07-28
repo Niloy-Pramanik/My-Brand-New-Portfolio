@@ -56,9 +56,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           {/* Scrollable content area */}
           <div className="flex-1 min-w-0 pb-20 lg:pb-0 pt-8 lg:pt-28">
             <main>{children}</main>
-            <Footer />
           </div>
         </div>
+        <Footer />
       </body>
     </html>
   );
