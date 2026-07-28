@@ -18,6 +18,13 @@ const NAV_ITEMS = [
 export function Navbar() {
   const pathname = usePathname();
 
+  const handleClick = (e: React.MouseEvent, href: string) => {
+    if (href === '/' && pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
       {/* Desktop: Site Logo & Centered Nav */}
@@ -40,6 +47,7 @@ export function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  onClick={(e) => handleClick(e, item.href)}
                   className={`nav-icon group ${isActive ? 'active' : ''}`}
                   aria-label={item.label}
                 >
@@ -70,6 +78,7 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={(e) => handleClick(e, item.href)}
                 className={`flex flex-col items-center gap-1 min-w-[48px] ${
                   isActive ? 'text-white' : 'text-sawad-muted'
                 }`}
