@@ -108,7 +108,7 @@ export const ACHIEVEMENTS: Achievement[] = [
     title: 'Hackathon Participant',
     badge: 'Judges Choice',
     description:
-      'Participated in a 48-hour hackathon competition for innovative solution development.',
+      'Participated in a 12 hours hackathon competition for innovative solution development.',
     image: '/Hackathon.jpg',
   },
 ];
