@@ -39,8 +39,8 @@ export function SubSectionHeading({ line1, line2 }: SectionHeadingProps) {
       viewport={VIEWPORT_OFFSET}
     >
       <motion.div variants={revealVariants}>
-        <h3 className="heading-primary text-[clamp(1.75rem,4vw,3.25rem)] tracking-wider">{line1}</h3>
-        <h3 className="heading-ghost text-[clamp(1.75rem,4vw,3.25rem)] tracking-wider">{line2}</h3>
+        <h3 className="heading-primary text-[clamp(2.25rem,5.5vw,4.5rem)]">{line1}</h3>
+        <h3 className="heading-ghost text-[clamp(2.25rem,5.5vw,4.5rem)]">{line2}</h3>
       </motion.div>
     </motion.div>
   );
