@@ -1,13 +1,15 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { PROJECTS } from '@/lib/data';
 import { useReveal, VIEWPORT_OFFSET } from '@/lib/animations';
 
 export function ProjectsGrid({ limit }: { limit?: number }) {
   const projects = limit ? PROJECTS.slice(0, limit) : PROJECTS;
+  const hasMore = limit && PROJECTS.length > limit;
   const { revealVariants } = useReveal();
 
   return (
@@ -71,6 +73,28 @@ export function ProjectsGrid({ limit }: { limit?: number }) {
           />
         </motion.a>
       ))}
+
+      {hasMore && (
+        <motion.div
+          variants={revealVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT_OFFSET}
+          className="mt-10 flex justify-center"
+        >
+          <Link
+            href="/projects"
+            className="group/btn inline-flex items-center gap-2.5 px-6 py-3 text-sm font-bold tracking-wide
+                       border border-sawad-border rounded-full bg-transparent text-sawad-muted
+                       hover:border-sawad-accent/50 hover:text-sawad-accent hover:bg-sawad-accent/5
+                       hover:shadow-[0_0_20px_rgba(232,98,44,0.1)]
+                       transition-all duration-300"
+          >
+            View More
+            <ArrowRight size={16} className="transition-transform duration-300 group-hover/btn:translate-x-1" />
+          </Link>
+        </motion.div>
+      )}
     </div>
   );
 }

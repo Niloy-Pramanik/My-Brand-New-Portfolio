@@ -68,7 +68,11 @@ export function CertificatesGrid({ limit }: { limit?: number }) {
         <div className="mt-12 flex justify-center">
           <button
             onClick={() => setShowAll(!showAll)}
-            className="nav-pill text-sawad-text font-bold text-sm hover:bg-white/10 transition-colors cursor-pointer"
+            className="group/btn inline-flex items-center gap-2.5 px-6 py-3 text-sm font-bold tracking-wide cursor-pointer
+                       border border-sawad-border rounded-full bg-transparent text-sawad-muted
+                       hover:border-sawad-accent/50 hover:text-sawad-accent hover:bg-sawad-accent/5
+                       hover:shadow-[0_0_20px_rgba(232,98,44,0.1)]
+                       transition-all duration-300"
           >
             {showAll ? 'View Less' : 'View More'}
           </button>
