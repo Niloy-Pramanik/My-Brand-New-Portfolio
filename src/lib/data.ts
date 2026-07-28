@@ -303,8 +303,26 @@ export const EDUCATION = {
   graduationEstimate: 'Expected Graduation: Late 2026',
   journey: "Four years at UIU have been a journey of growth, pressure, and purpose. Between long nights, deadlines, and the constant push to learn something new, I've been fortunate to have mentors who guided me and an environment that challenged me to become better. As I approach the end of this chapter, I'm deeply grateful to God for strength through it all, to my parents for their unconditional support, and to my teachers for their patience and guidance along the way.",
   courses: [
-    { code: 'CSE 4889', title: 'Machine Learning', credits: null },
-    { code: 'CSE 4883', title: 'Digital Image Processing', credits: 3.0 },
-    { code: 'CSE 4891', title: 'Data Mining', credits: 3.0 },
+    {
+      code: 'CSE 4889',
+      title: 'Machine Learning',
+      credits: null,
+      icon: 'ml',
+      description: 'Building intelligent systems that learn from data — covering supervised, unsupervised, and reinforcement learning with hands-on model training, evaluation, and real-world deployment.',
+    },
+    {
+      code: 'CSE 4883',
+      title: 'Digital Image Processing',
+      credits: 3.0,
+      icon: 'dip',
+      description: 'Transforming raw pixels into actionable insights — mastering spatial filtering, edge detection, segmentation, and feature extraction for computer vision applications.',
+    },
+    {
+      code: 'CSE 4891',
+      title: 'Data Mining',
+      credits: 3.0,
+      icon: 'dm',
+      description: 'Discovering hidden patterns in large datasets — applying clustering, classification, association rules, and anomaly detection to extract meaningful knowledge from complex data.',
+    },
   ],
 };
