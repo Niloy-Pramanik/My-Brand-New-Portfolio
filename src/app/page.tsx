@@ -19,12 +19,12 @@ export default function Home() {
       <CapabilityTags />
 
       {/* 2. Skill */}
-      <HomeSection line1="TECH STACK" line2="HIGHLIGHT">
+      <HomeSection id="skill" line1="TECH STACK" line2="HIGHLIGHT">
         <ToolsGrid />
       </HomeSection>
 
       {/* 3. Project */}
-      <HomeSection line1="RECENT" line2="PROJECTS">
+      <HomeSection id="projects" line1="RECENT" line2="PROJECTS">
         <ProjectsGrid limit={3} />
       </HomeSection>
 
@@ -45,12 +45,12 @@ export default function Home() {
       </HomeSection>
 
       {/* 4. Research */}
-      <HomeSection line1="RESEARCH" line2="AREAS">
+      <HomeSection id="research" line1="RESEARCH" line2="AREAS">
         <ResearchGrid />
       </HomeSection>
 
       {/* 5. Certificates */}
-      <HomeSection line1="VERIFIED" line2="LEARNING">
+      <HomeSection id="certificates" line1="VERIFIED" line2="LEARNING">
         <CertificatesGrid />
       </HomeSection>
 
