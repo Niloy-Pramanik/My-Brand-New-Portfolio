@@ -9,7 +9,7 @@ export function Footer() {
 
   return (
     <motion.footer 
-      className="py-10 mt-16 text-center text-sm text-sawad-muted"
+      className="py-10 mt-16 flex items-center justify-center text-center text-sm text-sawad-muted w-full"
       variants={revealVariants}
       initial="hidden"
       whileInView="visible"
