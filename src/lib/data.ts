@@ -72,7 +72,7 @@ export const PROJECTS: Project[] = [
     title: 'My-Portfolio-Website',
     description: 'My personal portfolio website designed to showcase my skills, projects, and research areas with a modern tech stack and dynamic animations.',
     tech: ['Next.js', 'Tailwind CSS', 'TypeScript', 'Framer Motion'],
-    link: 'https://github.com/Niloy-Pramanik/My-Portfolio-Website',
+    link: 'https://github.com/Niloy-Pramanik/My-Brand-New-Portfolio',
     linkExternal: true,
     image: '/portfolio.png',
   },
