@@ -248,12 +248,12 @@ export const TOOLS: ToolGroup[] = [
 ];
 
 export const FOCUS_AREAS = [
-  'Machine Learning',
-  'Computer Vision',
-  'AI Security',
-  'Agentic AI',
-  'RAG Systems',
-  'Wireless Sensor Networks',
+  { title: 'Machine Learning', description: 'Predictive modeling and pattern recognition powering healthcare diagnostics, fintech fraud detection, and recommendation engines.' },
+  { title: 'Computer Vision', description: 'Image classification, object detection, and segmentation driving autonomous systems, quality inspection, and medical imaging.' },
+  { title: 'AI Security', description: 'Adversarial robustness, model integrity, and threat detection safeguarding enterprise AI deployments against emerging attacks.' },
+  { title: 'Agentic AI', description: 'Autonomous multi-agent systems with tool use and reasoning, enabling workflow automation and intelligent decision-making at scale.' },
+  { title: 'RAG Systems', description: 'Retrieval-augmented generation pipelines grounding LLM outputs in domain-specific knowledge for accurate enterprise search and Q&A.' },
+  { title: 'Wireless Sensor Networks', description: 'Energy-efficient routing and data aggregation protocols for IoT, smart agriculture, and industrial monitoring infrastructure.' },
 ];
 
 export const STATS = [

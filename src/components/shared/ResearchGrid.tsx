@@ -19,10 +19,10 @@ export function ResearchGrid() {
           className="p-6 rounded-2xl bg-sawad-surface border border-sawad-border hover:border-sawad-accent/50 transition-colors group cursor-pointer"
         >
           <h3 className="font-display font-bold text-xl text-white group-hover:text-sawad-accent transition-colors">
-            {area}
+            {area.title}
           </h3>
           <p className="mt-2 text-sm text-sawad-muted">
-            Exploring cutting-edge applications and theoretical advancements in {area.toLowerCase()}.
+            {area.description}
           </p>
         </motion.div>
       ))}
