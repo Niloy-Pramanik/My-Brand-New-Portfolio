@@ -43,7 +43,7 @@ export const PROJECTS: Project[] = [
   {
     id: '01',
     title: 'HireMe',
-    description: 'A comprehensive job matching platform designed to connect talented developers with career opportunities using real-time skill matching and notifications.',
+    description: 'A comprehensive SaaS recruitment platform that combines video interviewing with online examination capabilities, streamlining remote hiring workflows while supporting scalable management of candidates, employers, and interviewers.',
     tech: ['Flask', 'HTMX', 'Tailwind CSS', 'Alpine.js'],
     link: 'https://github.com/Niloy-Pramanik/HireMe',
     linkExternal: true,
