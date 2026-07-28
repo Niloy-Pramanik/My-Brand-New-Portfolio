@@ -153,15 +153,6 @@ export function CSMajor() {
             </p>
           )}
 
-          {/* Credits badge */}
-          {course.credits && (
-            <div className="mt-auto pt-2">
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-sawad-muted">
-                <span className="w-1 h-1 rounded-full bg-sawad-accent/50" />
-                {course.credits} Credits
-              </span>
-            </div>
-          )}
         </motion.div>
       ))}
     </motion.div>
