@@ -30,7 +30,7 @@ export const metadata: Metadata = {
       'Portfolio of Niloy Pramanik, a Computer Science student building full-stack web applications and exploring AI/ML, computer vision, and AI security.',
     url: 'https://niloypramanik-portfolio.vercel.app',
     siteName: 'Niloy Pramanik',
-    images: ['/images/portfolio_demo.jpg'],
+    images: ['/Profile_portfolio.png'],
     type: 'website',
   },
   twitter: {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: 'Niloy Pramanik — Full-Stack Developer & AI Engineer',
     description:
       'Portfolio of Niloy Pramanik, a Computer Science student building full-stack web applications and exploring AI/ML, computer vision, and AI security.',
-    images: ['/images/portfolio_demo.jpg'],
+    images: ['/Profile_portfolio.png'],
   },
 };
 
