@@ -28,14 +28,14 @@ export function Sidebar() {
 
           {/* Profile photo with orange background */}
           <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden mb-6">
-            <div className="absolute inset-0 bg-gradient-to-br from-sawad-accent to-sawad-coral" />
+
             <Image
               src={PROFILE.heroImage}
               alt={PROFILE.name}
               fill
               priority
               sizes="340px"
-              className="object-cover relative z-10 mix-blend-multiply grayscale contrast-125 brightness-110"
+              className="object-cover relative z-10"
             />
           </div>
 
