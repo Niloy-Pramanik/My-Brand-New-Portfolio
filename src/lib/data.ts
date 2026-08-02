@@ -18,8 +18,8 @@ export const PROFILE = {
   email: 'niloypramanik126@gmail.com',
   phone: '+880 1796 894 640',
   phoneHref: 'tel:+8801796894640',
-  cvUrl: '/CV_Niloy_Pramanik.pdf',
-  heroImage: '/Portfolio-new.png',
+  cvUrl: '/Niloy_Pramanik_CV.pdf',
+  heroImage: '/images/portfolio_demo.jpg',
 };
 
 export const SOCIALS = [
