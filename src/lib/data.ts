@@ -19,7 +19,7 @@ export const PROFILE = {
   phone: '+880 1796 894 640',
   phoneHref: 'tel:+8801796894640',
   cvUrl: '/Niloy_Pramanik_CV.pdf',
-  heroImage: '/Portfolio-new.png',
+  heroImage: '/Profile_portfolio.png',
 };
 
 export const SOCIALS = [
