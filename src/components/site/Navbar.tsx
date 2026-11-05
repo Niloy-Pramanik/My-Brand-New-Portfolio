@@ -67,6 +67,25 @@ export function Navbar() {
     }
   };
 
+  const handleMobileNavigate = (event: { preventDefault: () => void }, href: string) => {
+    if (!isHome) return;
+    const section = href.startsWith('/#') ? document.getElementById(href.slice(2)) : null;
+    if (href !== '/' && !section) return;
+
+    event.preventDefault();
+    if (window.location.pathname + window.location.hash !== href) {
+      window.history.pushState(null, '', href);
+    }
+    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? 'instant'
+      : 'smooth';
+    if (section) {
+      section.scrollIntoView({ behavior, block: 'start' });
+    } else {
+      window.scrollTo({ top: 0, behavior });
+    }
+  };
+
   const getIsActive = (item: typeof NAV_ITEMS[number]) => {
     if (isHome) {
       // Scroll-spy based active state on homepage
@@ -78,6 +97,8 @@ export function Navbar() {
     if (item.href.startsWith('/#')) return false;
     return pathname.startsWith(item.href);
   };
+
+  const activeMobileIndex = NAV_ITEMS.findIndex(getIsActive);
 
   return (
     <>
@@ -111,33 +132,43 @@ export function Navbar() {
 
       {/* Mobile: bottom-fixed icon bar */}
       <nav
-        className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-sawad-bg/95 backdrop-blur-xl border-t border-sawad-border"
+        className="mobile-bottom-nav lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-sawad-bg/95 backdrop-blur-xl border-t border-sawad-border"
         style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
       >
-        <div className="grid grid-cols-7 items-center px-1 py-2">
-          {NAV_ITEMS.map((item) => {
-            const Icon = item.icon;
-            const isActive = getIsActive(item);
+        <div className="mx-1 py-2">
+          <div className="relative grid grid-cols-7 items-center">
+            <span
+              aria-hidden="true"
+              className="mobile-nav-indicator pointer-events-none absolute inset-y-0 left-0 w-[calc(100%/7)] px-0.5"
+              style={{
+                transform: `translateX(${Math.max(activeMobileIndex, 0) * 100}%)`,
+                opacity: activeMobileIndex < 0 ? 0 : 1,
+              }}
+            >
+              <span className="block h-full rounded-2xl bg-sawad-accent/12 border border-sawad-accent/15" />
+              <span className="absolute top-0 left-1/2 -translate-x-1/2 h-0.5 w-4 rounded-full bg-sawad-accent" />
+            </span>
+            {NAV_ITEMS.map((item) => {
+              const Icon = item.icon;
+              const isActive = getIsActive(item);
 
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                onNavigate={(event) => handleNavigate(event, item.href)}
-                className={`relative flex flex-col items-center gap-0.5 py-1 text-[9px] leading-none ${
-                  isActive ? 'text-white' : 'text-sawad-muted'
-                }`}
-                aria-label={item.label}
-                aria-current={isActive ? 'page' : undefined}
-              >
-                {isActive && (
-                  <span className="absolute -top-2 left-1/2 -translate-x-1/2 h-[3px] w-6 rounded-full bg-sawad-accent" />
-                )}
-                <Icon size={19} strokeWidth={1.8} />
-                <span className="tracking-wide">{item.label}</span>
-              </Link>
-            );
-          })}
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onNavigate={(event) => handleMobileNavigate(event, item.href)}
+                  className={`mobile-nav-link relative flex min-h-12 flex-col items-center justify-center gap-1 py-1 text-[9px] leading-none ${
+                    isActive ? 'text-white' : 'text-sawad-muted'
+                  }`}
+                  aria-label={item.label}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  <Icon className="mobile-nav-icon" size={19} strokeWidth={1.8} />
+                  <span className="tracking-wide">{item.label}</span>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </nav>
     </>
