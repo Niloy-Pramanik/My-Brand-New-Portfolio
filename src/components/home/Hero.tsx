@@ -45,7 +45,7 @@ export function Hero() {
         className="border-l border-sawad-border pl-4 mb-10"
       >
         <p className="text-sawad-muted/80 text-sm md:text-base italic mb-1.5">
-          "Stay hungry, stay foolish."
+          &quot;Stay hungry, stay foolish.&quot;
         </p>
         <footer className="text-[10px] text-sawad-muted uppercase tracking-widest font-bold">
           — Steve Jobs

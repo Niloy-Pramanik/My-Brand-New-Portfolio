@@ -9,8 +9,8 @@ const NAV_ITEMS = [
   { href: '/', icon: Home, label: 'Home', sectionId: null },
   { href: '/skill', icon: Wrench, label: 'Skill', sectionId: 'skill' },
   { href: '/projects', icon: FolderOpen, label: 'Project', sectionId: 'projects' },
-  { href: '/research', icon: Microscope, label: 'Research', sectionId: 'research' },
   { href: '/#education', icon: GraduationCap, label: 'Education', sectionId: 'education' },
+  { href: '/research', icon: Microscope, label: 'Research', sectionId: 'research' },
   { href: '/certificates', icon: Award, label: 'Certificates', sectionId: 'certificates' },
   { href: '/#contact', icon: MessageSquare, label: 'Contact', sectionId: 'contact' },
 ];
@@ -23,12 +23,9 @@ export function Navbar() {
   const isHome = pathname === '/';
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
-  // Scroll spy: observe homepage sections with IntersectionObserver
+  // Track the last section above the reading line, including during upward scrolls.
   useEffect(() => {
-    if (!isHome) {
-      setActiveSection(null);
-      return;
-    }
+    if (!isHome) return;
 
     const elements = SECTION_IDS
       .map((id) => document.getElementById(id))
@@ -36,64 +33,37 @@ export function Navbar() {
 
     if (elements.length === 0) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // Find all currently intersecting sections
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-
-        if (visible.length > 0) {
-          setActiveSection(visible[0].target.id);
-        } else {
-          // If nothing is intersecting, check if we're at the very top
-          if (window.scrollY < 200) {
-            setActiveSection(null); // Home
-          }
+    let frame: number | null = null;
+    const updateActiveSection = () => {
+      frame = null;
+      let activeId: string | null = null;
+      for (const element of elements) {
+        if (element.getBoundingClientRect().top <= window.innerHeight * 0.3) {
+          activeId = element.id;
         }
-      },
-      {
-        rootMargin: '-10% 0px -70% 0px', // Widened band so short/mobile viewports still trigger
-        threshold: 0,
       }
-    );
-
-    elements.forEach((el) => observer.observe(el));
-
-    // Also listen for scroll to detect "at top" for Home highlight
-    const handleScroll = () => {
-      if (window.scrollY < 200) {
-        setActiveSection(null);
-      }
+      setActiveSection(window.scrollY < 200 ? null : activeId);
     };
+    const handleScroll = () => {
+      if (frame === null) frame = window.requestAnimationFrame(updateActiveSection);
+    };
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
 
     return () => {
-      observer.disconnect();
+      if (frame !== null) window.cancelAnimationFrame(frame);
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
     };
   }, [isHome]);
 
-  const handleClick = (e: React.MouseEvent, href: string) => {
-    if (href === '/' && pathname === '/') {
-      e.preventDefault();
+  const handleNavigate = (event: { preventDefault: () => void }, href: string) => {
+    // Same-page Home should include the profile card above the main content.
+    if (isHome && href === '/') {
+      event.preventDefault();
+      if (window.location.hash) window.history.pushState(null, '', '/');
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-    // Hash link to a homepage section from another route: navigate home, then scroll
-    if (href.startsWith('/#') && pathname !== '/') {
-      e.preventDefault();
-      const hash = href.slice(1); // e.g. "#education"
-      const go = () => {
-        const el = document.getElementById(hash.slice(1));
-        el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      };
-      // Let Next router navigate home first, then scroll once the section exists
-      const timer = window.setInterval(go, 150);
-      window.setTimeout(() => {
-        go();
-        window.clearInterval(timer);
-      }, 2500);
     }
   };
 
@@ -124,7 +94,7 @@ export function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  onClick={(e) => handleClick(e, item.href)}
+                  onNavigate={(event) => handleNavigate(event, item.href)}
                   className={`nav-icon group ${isActive ? 'active' : ''}`}
                   aria-label={item.label}
                 >
@@ -153,7 +123,7 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={(e) => handleClick(e, item.href)}
+                onNavigate={(event) => handleNavigate(event, item.href)}
                 className={`relative flex flex-col items-center gap-0.5 py-1 text-[9px] leading-none ${
                   isActive ? 'text-white' : 'text-sawad-muted'
                 }`}
