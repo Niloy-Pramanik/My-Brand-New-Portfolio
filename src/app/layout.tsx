@@ -53,8 +53,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           {/* Fixed sidebar (desktop only, centered card on mobile) */}
           <Sidebar />
 
-          {/* Scrollable content area */}
-          <div className="flex-1 min-w-0 pb-20 lg:pb-0 pt-8 lg:pt-28">
+          {/* Scrollable content area — extra bottom pad so the mobile bar never covers content */}
+          <div className="flex-1 min-w-0 pb-28 lg:pb-0 pt-8 lg:pt-28">
             <main>{children}</main>
           </div>
         </div>

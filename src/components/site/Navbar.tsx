@@ -53,7 +53,7 @@ export function Navbar() {
         }
       },
       {
-        rootMargin: '-20% 0px -60% 0px', // Trigger when section enters top 20-40% of viewport
+        rootMargin: '-10% 0px -70% 0px', // Widened band so short/mobile viewports still trigger
         threshold: 0,
       }
     );
@@ -78,6 +78,22 @@ export function Navbar() {
     if (href === '/' && pathname === '/') {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    // Hash link to a homepage section from another route: navigate home, then scroll
+    if (href.startsWith('/#') && pathname !== '/') {
+      e.preventDefault();
+      const hash = href.slice(1); // e.g. "#education"
+      const go = () => {
+        const el = document.getElementById(hash.slice(1));
+        el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+      // Let Next router navigate home first, then scroll once the section exists
+      const timer = window.setInterval(go, 150);
+      window.setTimeout(() => {
+        go();
+        window.clearInterval(timer);
+      }, 2500);
     }
   };
 
@@ -96,10 +112,10 @@ export function Navbar() {
   return (
     <>
       {/* Desktop: Site Logo & Centered Nav */}
-      <nav className="hidden lg:block absolute top-8 left-0 right-0 z-50">
+      <nav className="hidden lg:block fixed top-4 left-0 right-0 z-50 pointer-events-none">
         <div className="max-w-7xl mx-auto px-6 relative">
           {/* Centered Pill */}
-          <div className="nav-pill flex items-center gap-1 mx-auto w-fit">
+          <div className="nav-pill flex items-center gap-1 mx-auto w-fit pointer-events-auto">
             {NAV_ITEMS.map((item) => {
               const Icon = item.icon;
               const isActive = getIsActive(item);
@@ -124,8 +140,11 @@ export function Navbar() {
       </nav>
 
       {/* Mobile: bottom-fixed icon bar */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-sawad-bg/90 backdrop-blur-xl border-t border-sawad-border">
-        <div className="flex items-center justify-around py-3 px-2">
+      <nav
+        className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-sawad-bg/95 backdrop-blur-xl border-t border-sawad-border"
+        style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+      >
+        <div className="grid grid-cols-7 items-center px-1 py-2">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isActive = getIsActive(item);
@@ -135,13 +154,17 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleClick(e, item.href)}
-                className={`flex flex-col items-center gap-1 min-w-[48px] ${
+                className={`relative flex flex-col items-center gap-0.5 py-1 text-[9px] leading-none ${
                   isActive ? 'text-white' : 'text-sawad-muted'
                 }`}
                 aria-label={item.label}
+                aria-current={isActive ? 'page' : undefined}
               >
-                <Icon size={20} strokeWidth={1.8} />
-                <span className="text-[10px] tracking-wide">{item.label}</span>
+                {isActive && (
+                  <span className="absolute -top-2 left-1/2 -translate-x-1/2 h-[3px] w-6 rounded-full bg-sawad-accent" />
+                )}
+                <Icon size={19} strokeWidth={1.8} />
+                <span className="tracking-wide">{item.label}</span>
               </Link>
             );
           })}
