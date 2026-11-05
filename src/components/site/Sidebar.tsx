@@ -35,7 +35,7 @@ export function Sidebar() {
               fill
               priority
               sizes="340px"
-              className="object-cover relative z-10 mix-blend-multiply grayscale contrast-125 brightness-110"
+              className="object-cover relative z-10 mix-blend-multiply grayscale contrast-100 brightness-110"
             />
           </div>
 
