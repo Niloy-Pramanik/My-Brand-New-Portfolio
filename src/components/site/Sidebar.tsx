@@ -26,17 +26,17 @@ export function Sidebar() {
         <div className="sidebar-card p-6 pb-8 relative overflow-visible">
 
 
-          {/* Profile photo with a lighter orange wash */}
+          {/* Profile photo with orange background */}
           <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden mb-6">
+            <div className="absolute inset-0 bg-gradient-to-br from-sawad-accent to-sawad-coral" />
             <Image
               src={PROFILE.heroImage}
               alt={PROFILE.name}
               fill
               priority
               sizes="340px"
-              className="object-cover brightness-[1.18] contrast-[0.94] saturate-[1.05]"
+              className="object-cover relative z-10 mix-blend-multiply grayscale contrast-100 brightness-110"
             />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-sawad-accent/55 via-sawad-coral/50 to-sawad-accent/65 mix-blend-color" />
           </div>
 
           {/* Name */}
