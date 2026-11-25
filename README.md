@@ -14,15 +14,15 @@
 
 ## Overview
 
-**Modern portfolio website** for a Full-Stack Developer & AI Engineer with:
+**Personal portfolio website** focused on Software Engineering & Applied AI, refined within the existing Next.js architecture:
 - Animated hero section with split-color name display
 - Premium pill badges for section headers ("My Expertise", "Award Winning")
 - Seamless section transitions with gradient fade and ambient glow effects
 - About section with flip cards and statistics
-- Project showcase with GitHub links
+- Seven-project showcase with reusable internal detail pages and GitHub/live links
 - Skills, research, and contact sections with advanced typography
 - Fully responsive contact form with Formspree email integration (50 submissions/month free)
-- Smooth scroll animations with GSAP & Framer Motion
+- Existing Framer Motion animations and mobile page transitions
 - Full dark mode support
 - Optimized typography with justified text alignment and constrained line width
 
@@ -367,5 +367,5 @@ rm -rf node_modules     # Clear dependencies
 **For detailed customization, see DESIGN_SUMMARY.md**
 
 **Last Updated:** March 29, 2026  
-**Portfolio:** Niloy Pramanik | Full-Stack Developer & AI Engineer  
+**Portfolio:** Niloy Pramanik | Software Engineering & Applied AI
 **GitHub:** https://github.com/Niloy-Pramanik

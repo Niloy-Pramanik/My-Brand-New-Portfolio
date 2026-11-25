@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { PROFILE, SOCIALS } from '@/lib/data';
 import { Mail, Phone } from 'lucide-react';
 
@@ -20,6 +21,9 @@ const socialIcons: Record<string, React.ReactNode> = {
 };
 
 export function Sidebar() {
+  const pathname = usePathname();
+  if (pathname !== '/') return null;
+
   return (
     <aside className="w-full max-w-[340px] xl:max-w-[380px] shrink-0 pt-8 lg:pt-28 mx-auto lg:mx-0">
       <div className="sticky top-8 z-10">
@@ -45,6 +49,7 @@ export function Sidebar() {
           </h2>
 
           {/* Bio */}
+          <p className="text-center text-sm font-semibold text-gray-700 mb-3">{PROFILE.role}</p>
           <p className="text-center text-sm text-gray-500 leading-relaxed mb-6 px-2">
             {PROFILE.tagline}
           </p>

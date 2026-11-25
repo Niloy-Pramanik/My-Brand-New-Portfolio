@@ -55,8 +55,9 @@ export function ContactForm() {
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
-            <label className="text-sm text-sawad-muted mb-2 block">Name</label>
+            <label htmlFor="contact-name" className="text-sm text-sawad-muted mb-2 block">Name</label>
             <input
+              id="contact-name"
               type="text"
               name="name"
               placeholder="Your Name"
@@ -67,8 +68,9 @@ export function ContactForm() {
             />
           </div>
           <div>
-            <label className="text-sm text-sawad-muted mb-2 block">Email</label>
+            <label htmlFor="contact-email" className="text-sm text-sawad-muted mb-2 block">Email</label>
             <input
+              id="contact-email"
               type="email"
               name="email"
               placeholder="Your@email.com"
@@ -81,8 +83,9 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label className="text-sm text-sawad-muted mb-2 block">Message</label>
+          <label htmlFor="contact-message" className="text-sm text-sawad-muted mb-2 block">Message</label>
           <textarea
+            id="contact-message"
             name="message"
             placeholder="Message"
             value={formData.message}

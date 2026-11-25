@@ -42,9 +42,16 @@ export function AcademicBackground() {
             <p className="text-sm md:text-base text-sawad-muted">
               {EDUCATION.university}
             </p>
+            <p className="text-sm text-sawad-muted mt-1">{EDUCATION.location}</p>
           </div>
         </div>
       </div>
+
+      <dl className="flex flex-wrap gap-x-8 gap-y-4 text-sm">
+        <div><dt className="text-sawad-muted">Major</dt><dd className="mt-1">{EDUCATION.major}</dd></div>
+        <div><dt className="text-sawad-muted">Current CGPA</dt><dd className="mt-1">{EDUCATION.cgpa}</dd></div>
+        <div><dt className="text-sawad-muted">Academic status</dt><dd className="mt-1">{EDUCATION.status}</dd></div>
+      </dl>
       
       {EDUCATION.graduationEstimate && (
         <div>
@@ -156,5 +163,23 @@ export function CSMajor() {
         </motion.div>
       ))}
     </motion.div>
+  );
+}
+
+export function CSFundamentals() {
+  const { revealVariants } = useReveal();
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      {EDUCATION.fundamentals.map((group) => (
+        <motion.div key={group.category} variants={revealVariants} initial="hidden" whileInView="visible" viewport={VIEWPORT_OFFSET}
+          className="rounded-2xl border border-sawad-border bg-sawad-surface/50 p-6 hover:border-sawad-accent/40 transition-colors">
+          <h3 className="font-display font-bold text-lg mb-4">{group.category}</h3>
+          <ul className="space-y-3 text-sm text-sawad-muted">
+            {group.subjects.map((subject) => <li key={subject}>{subject}</li>)}
+          </ul>
+        </motion.div>
+      ))}
+    </div>
   );
 }

@@ -43,6 +43,7 @@ next-env.d.ts
 # Documentation files (keep only README.md)
 *.md
 !README.md
+!REFINEMENT_REPORT.md
 
 # Logs
 *.log

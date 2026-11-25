@@ -21,7 +21,7 @@ export function StatsStrip() {
           variants={revealVariants}
         >
           <p className="font-display font-black text-4xl md:text-5xl tracking-tightest text-white">
-            +{stat.value}
+            {stat.value}{stat.suffix}
           </p>
           <p className="text-xs uppercase tracking-widest text-sawad-muted mt-2">
             {stat.label}

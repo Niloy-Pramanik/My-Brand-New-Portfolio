@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 import { FOCUS_AREAS } from '@/lib/data';
 import { useReveal, VIEWPORT_OFFSET } from '@/lib/animations';
 
-export function ResearchGrid() {
+export function ResearchGrid({ limit }: { limit?: number }) {
   const { revealVariants } = useReveal();
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {FOCUS_AREAS.map((area, index) => (
+      {FOCUS_AREAS.slice(0, limit).map((area, index) => (
         <motion.div 
           key={index}
           variants={revealVariants}

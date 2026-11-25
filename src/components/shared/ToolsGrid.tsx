@@ -9,7 +9,8 @@ import {
   SiMysql, SiSqlite, SiMongodb,
   SiScikitlearn, SiTensorflow, SiPytorch, SiLangchain,
   SiPycharm, SiGithub, SiJira, SiN8N, SiCursor, SiDocker,
-  SiTailwindcss, SiHtmx, SiAlpinedotjs
+  SiTailwindcss, SiHtmx, SiAlpinedotjs, SiPostgresql, SiNodedotjs,
+  SiSpringboot, SiPreact, SiOpencv, SiVercel, SiOpenjdk
 } from 'react-icons/si';
 import { TbBrandVscode } from 'react-icons/tb';
 import { Box } from 'lucide-react';
@@ -29,12 +30,19 @@ const iconMap: Record<string, React.ReactNode> = {
 
   'Flask': <SiFlask color="#000000" size={24} />,
   'Django': <SiDjango color="#092E20" size={24} />,
+  'Java': <SiOpenjdk color="#241F21" size={24} />,
 
   'MySQL': <SiMysql color="#4479A1" size={24} />,
   'SQLite': <SiSqlite color="#003B57" size={24} />,
   'MongoDB': <SiMongodb color="#47A248" size={24} />,
 
-  'Scikit-Learn': <SiScikitlearn color="#F7931E" size={24} />,
+  'Scikit-learn': <SiScikitlearn color="#F7931E" size={24} />,
+  'PostgreSQL': <SiPostgresql color="#4169E1" size={24} />,
+  'Node.js': <SiNodedotjs color="#339933" size={24} />,
+  'Spring Boot': <SiSpringboot color="#6DB33F" size={24} />,
+  'Preact': <SiPreact color="#673AB8" size={24} />,
+  'OpenCV': <SiOpencv color="#5C3EE8" size={24} />,
+  'Vercel': <SiVercel color="#000000" size={24} />,
   'TensorFlow': <SiTensorflow color="#FF6F00" size={24} />,
   'PyTorch': <SiPytorch color="#EE4C2C" size={24} />,
   'LangChain': <SiLangchain color="#1C3C3C" size={24} />,
@@ -48,12 +56,13 @@ const iconMap: Record<string, React.ReactNode> = {
   'Docker': <SiDocker color="#2496ED" size={24} />,
 };
 
-export function ToolsGrid() {
+export function ToolsGrid({ only }: { only?: string[] }) {
   const { revealVariants } = useReveal();
+  const groups = only ? TOOLS.filter((group) => only.includes(group.category)) : TOOLS;
 
   return (
     <div className="flex flex-col gap-12">
-      {TOOLS.map((group) => (
+      {groups.map((group) => (
         <motion.div
           key={group.category}
           variants={revealVariants}
@@ -65,6 +74,7 @@ export function ToolsGrid() {
           <h4 className="font-display font-bold text-2xl text-white">
             {group.category}
           </h4>
+          {group.description && <p className="text-sawad-muted -mt-3">{group.description}</p>}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-x-8 gap-y-6">
             {group.items.map((item) => (
               <div

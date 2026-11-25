@@ -7,6 +7,8 @@ import Link from 'next/link';
 import { PROJECTS } from '@/lib/data';
 import { useReveal, VIEWPORT_OFFSET } from '@/lib/animations';
 
+const MotionLink = motion.create(Link);
+
 export function ProjectsGrid({ limit }: { limit?: number }) {
   const projects = limit ? PROJECTS.slice(0, limit) : PROJECTS;
   const hasMore = limit && PROJECTS.length > limit;
@@ -15,11 +17,9 @@ export function ProjectsGrid({ limit }: { limit?: number }) {
   return (
     <div className="flex flex-col">
       {projects.map((project) => (
-        <motion.a
+        <MotionLink
           key={project.id}
-          href={project.link}
-          target={project.linkExternal ? '_blank' : undefined}
-          rel="noopener noreferrer"
+          href={`/projects/${project.slug}`}
           variants={revealVariants}
           initial="hidden"
           whileInView="visible"
@@ -32,7 +32,8 @@ export function ProjectsGrid({ limit }: { limit?: number }) {
               <Image 
                 src={project.image} 
                 alt={project.title} 
-                fill 
+                fill
+                sizes="(min-width: 768px) 144px, 96px"
                 className="object-cover transition-transform duration-700 group-hover:scale-105" 
               />
             ) : (
@@ -50,12 +51,13 @@ export function ProjectsGrid({ limit }: { limit?: number }) {
             <h3 className="font-display font-bold text-xl md:text-3xl text-white group-hover:text-sawad-accent transition-colors mb-2">
               {project.title}
             </h3>
+            <p className="text-xs text-sawad-accent mb-2">{project.category}</p>
             <p className="text-sm md:text-base text-sawad-muted mb-4 line-clamp-2 pr-4 md:pr-12">
               {project.description}
             </p>
             {/* Tech Stack Tags */}
             <div className="flex flex-wrap gap-2">
-              {project.tech.map((tech) => (
+              {project.tech.slice(0, 4).map((tech) => (
                 <span 
                   key={tech} 
                   className="px-2.5 py-1 text-[10px] md:text-xs font-medium bg-white/5 border border-white/10 rounded-full text-sawad-muted group-hover:border-sawad-accent/30 transition-colors"
@@ -64,6 +66,7 @@ export function ProjectsGrid({ limit }: { limit?: number }) {
                 </span>
               ))}
             </div>
+            <span className="inline-flex mt-4 text-xs font-bold text-sawad-muted group-hover:text-sawad-accent transition-colors">View Details →</span>
           </div>
 
           {/* Arrow */}
@@ -71,7 +74,7 @@ export function ProjectsGrid({ limit }: { limit?: number }) {
             size={24}
             className="text-sawad-muted group-hover:text-sawad-accent transition-all group-hover:translate-x-1 group-hover:-translate-y-1 shrink-0 ml-auto hidden md:block"
           />
-        </motion.a>
+        </MotionLink>
       ))}
 
       {hasMore && (
@@ -90,7 +93,7 @@ export function ProjectsGrid({ limit }: { limit?: number }) {
                        hover:shadow-[0_0_20px_rgba(232,98,44,0.1)]
                        transition-all duration-300"
           >
-            View More
+            View All Projects
             <ArrowRight size={16} className="transition-transform duration-300 group-hover/btn:translate-x-1" />
           </Link>
         </motion.div>

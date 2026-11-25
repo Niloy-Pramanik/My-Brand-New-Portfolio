@@ -4,6 +4,8 @@ import { Sidebar } from '@/components/site/Sidebar';
 import { Navbar } from '@/components/site/Navbar';
 import { MobilePageTransition } from '@/components/site/MobilePageTransition';
 import { Footer } from '@/components/site/Footer';
+import { PROFILE, SITE_TITLE, SITE_DESCRIPTION } from '@/lib/data';
+import { pageMetadata } from '@/lib/metadata';
 import './globals.css';
 
 const archivo = Archivo({
@@ -21,26 +23,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://niloypramanik-portfolio.vercel.app'),
-  title: 'Niloy Pramanik — Full-Stack Developer & AI Engineer',
-  description:
-    'Portfolio of Niloy Pramanik, a Computer Science student building full-stack web applications and exploring AI/ML, computer vision, and AI security.',
-  openGraph: {
-    title: 'Niloy Pramanik — Full-Stack Developer & AI Engineer',
-    description:
-      'Portfolio of Niloy Pramanik, a Computer Science student building full-stack web applications and exploring AI/ML, computer vision, and AI security.',
-    url: 'https://niloypramanik-portfolio.vercel.app',
-    siteName: 'Niloy Pramanik',
-    images: ['/images/portfolio_demo.jpg'],
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Niloy Pramanik — Full-Stack Developer & AI Engineer',
-    description:
-      'Portfolio of Niloy Pramanik, a Computer Science student building full-stack web applications and exploring AI/ML, computer vision, and AI security.',
-    images: ['/images/portfolio_demo.jpg'],
-  },
+  metadataBase: new URL(PROFILE.website),
+  ...pageMetadata(SITE_TITLE, SITE_DESCRIPTION, '/'),
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

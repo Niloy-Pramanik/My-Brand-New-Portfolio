@@ -5,7 +5,7 @@ import { ArrowRight, Layers, Layout } from 'lucide-react';
 import Link from 'next/link';
 import { useReveal, VIEWPORT_OFFSET } from '@/lib/animations';
 
-const EXPERTISE = [
+const INTERESTS = [
   {
     icon: <Layers size={28} strokeWidth={1.5} />,
     title: 'WSN, REINFORCEMENT LEARNING, SECURITY',
@@ -14,7 +14,7 @@ const EXPERTISE = [
   },
   {
     icon: <Layout size={28} strokeWidth={1.5} />,
-    title: 'REACT, TAILWIND CSS, HTMX, FLASK / DJANGO',
+    title: 'SOFTWARE ENGINEERING & APPLIED AI',
     href: '/skill',
     variant: 'lime' as const,
   },
@@ -34,7 +34,7 @@ export function CapabilityTags() {
         whileInView="visible"
         viewport={VIEWPORT_OFFSET}
       >
-        {EXPERTISE.map((item) => (
+        {INTERESTS.map((item) => (
           <MotionLink
             key={item.title}
             href={item.href}
@@ -48,9 +48,9 @@ export function CapabilityTags() {
               <h3 className="font-display font-bold text-sm md:text-base tracking-wide max-w-[80%]">
                 {item.title}
               </h3>
-              <button className="w-10 h-10 flex items-center justify-center rounded-lg border border-black/20 hover:bg-black/10 transition-colors shrink-0">
+              <span aria-hidden="true" className="w-10 h-10 flex items-center justify-center rounded-lg border border-black/20 hover:bg-black/10 transition-colors shrink-0">
                 <ArrowRight size={18} />
-              </button>
+              </span>
             </div>
           </MotionLink>
         ))}
