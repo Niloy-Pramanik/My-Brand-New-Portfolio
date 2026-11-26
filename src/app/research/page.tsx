@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
 import { pageMetadata } from '@/lib/metadata';
 import { PageHeader, SectionLabel } from '@/components/shared/SectionHeading';
 import { ResearchGrid } from '@/components/shared/ResearchGrid';
@@ -81,7 +82,7 @@ export default function ResearchPage() {
             <h3 className="font-display font-bold text-xl leading-relaxed mt-5">{RESEARCH.submission.conference}</h3>
             <a href={PROJECTS.find((project) => project.slug === 'merit-rp')!.link} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 mt-6 px-5 py-3 border border-sawad-border rounded-full hover:border-sawad-accent/50 hover:text-sawad-accent transition-colors">
               View Source Code
-              <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+              <ArrowUpRight size={15} aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </div>
         </div>

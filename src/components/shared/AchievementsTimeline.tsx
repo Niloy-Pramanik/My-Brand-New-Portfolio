@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { ACHIEVEMENTS } from '@/lib/data';
 import { useReveal, VIEWPORT_OFFSET } from '@/lib/animations';
 
@@ -48,7 +48,17 @@ export function AchievementsTimeline() {
               <p className="text-sawad-muted leading-relaxed">
                 {item.description}
               </p>
-              {item.certificateImage && <a href={item.certificateImage} target="_blank" rel="noopener noreferrer" className="inline-flex mt-4 text-sm text-sawad-accent hover:text-white transition-colors">View Award Certificate ↗</a>}
+              {item.certificateImage && (
+                <a
+                  href={item.certificateImage}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 mt-4 text-sm text-sawad-accent hover:text-white transition-colors"
+                >
+                  View Award Certificate
+                  <ArrowUpRight size={14} aria-hidden="true" />
+                </a>
+              )}
               {item.title.includes('FYDP') && (
                 <Link href="/research" className="inline-flex items-center gap-2 mt-4 text-sm font-bold tracking-widest text-sawad-accent hover:text-white transition-colors uppercase">
                   Related research <ArrowRight size={16} />
