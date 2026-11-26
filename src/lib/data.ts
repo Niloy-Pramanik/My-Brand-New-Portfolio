@@ -438,16 +438,6 @@ export const STATS = [
   { value: ACHIEVEMENTS.length, suffix: '', label: 'Project Awards' },
 ];
 
-export const NAV_LINKS = [
-  { label: 'Home', href: '/' },
-  { label: 'Skills', href: '/skill' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'Education', href: '/education' },
-  { label: 'Research', href: '/research' },
-  { label: 'Certificates and Achievements', href: '/certificates' },
-  { label: 'Contact', href: '/contact' },
-];
-
 export const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xpqoprwe';
 
 export const RESEARCH = {
