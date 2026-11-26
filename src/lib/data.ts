@@ -336,6 +336,9 @@ export interface ToolGroup {
   items: ToolItem[];
 }
 
+export const slugify = (value: string) =>
+  value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+
 export const TOOLS: ToolGroup[] = [
   { 
     category: 'Core Programming',
@@ -482,7 +485,6 @@ export const EDUCATION = {
   degree: 'Bachelor of Science in Computer Science and Engineering',
   major: 'Data Science',
   location: 'Dhaka, Bangladesh',
-  cgpa: '3.13/4.00',
   status: 'Final-year student',
   logo: '/UIU_Logo.svg',
   graduationEstimate: 'Expected graduation: February 2027',
@@ -508,8 +510,8 @@ export const EDUCATION = {
     },
   ],
   fundamentals: [
-    { category: 'Programming and Problem-Solving', subjects: ['Data Structures and Algorithms', 'Object-Oriented Programming', 'Advanced Object-Oriented Programming', 'Discrete Mathematics'] },
-    { category: 'Systems and Security', subjects: ['Operating Systems', 'Computer Networks', 'Computer Security', 'Computer Architecture'] },
-    { category: 'Software, Data and AI', subjects: ['Database Management Systems', 'Software Engineering', 'System Analysis and Design', 'Artificial Intelligence', 'Web Programming'] },
+    { category: 'Programming and Problem-Solving', icon: 'code', subjects: ['Data Structures and Algorithms', 'Object-Oriented Programming', 'Advanced Object-Oriented Programming', 'Discrete Mathematics'] },
+    { category: 'Systems and Security', icon: 'system', subjects: ['Operating Systems', 'Computer Networks', 'Computer Security', 'Computer Architecture'] },
+    { category: 'Software, Data and AI', icon: 'data', subjects: ['Database Management Systems', 'Software Engineering', 'System Analysis and Design', 'Artificial Intelligence', 'Web Programming'] },
   ],
 };

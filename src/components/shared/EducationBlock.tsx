@@ -49,7 +49,6 @@ export function AcademicBackground() {
 
       <dl className="flex flex-wrap gap-x-8 gap-y-4 text-sm">
         <div><dt className="text-sawad-muted">Major</dt><dd className="mt-1">{EDUCATION.major}</dd></div>
-        <div><dt className="text-sawad-muted">Current CGPA</dt><dd className="mt-1">{EDUCATION.cgpa}</dd></div>
         <div><dt className="text-sawad-muted">Academic status</dt><dd className="mt-1">{EDUCATION.status}</dd></div>
       </dl>
       
@@ -166,20 +165,89 @@ export function CSMajor() {
   );
 }
 
+const FUNDAMENTAL_ICONS: Record<string, React.ReactNode> = {
+  code: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+      <path d="M8 6 3 12l5 6" />
+      <path d="m16 6 5 6-5 6" />
+      <path d="m13.5 4-3 16" />
+    </svg>
+  ),
+  system: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+      <rect x="5" y="5" width="14" height="14" rx="2" />
+      <rect x="9.5" y="9.5" width="5" height="5" rx="1" />
+      <path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" />
+    </svg>
+  ),
+  data: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+      <ellipse cx="12" cy="5.5" rx="7" ry="3" />
+      <path d="M5 5.5v13c0 1.66 3.13 3 7 3s7-1.34 7-3v-13" />
+      <path d="M5 12c0 1.66 3.13 3 7 3s7-1.34 7-3" />
+    </svg>
+  ),
+};
+
 export function CSFundamentals() {
-  const { revealVariants } = useReveal();
+  const { revealVariants, containerVariants } = useReveal();
+
+  if (!EDUCATION.fundamentals || EDUCATION.fundamentals.length === 0) return null;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={VIEWPORT_OFFSET}
+      className="grid grid-cols-1 md:grid-cols-3 gap-5"
+    >
       {EDUCATION.fundamentals.map((group) => (
-        <motion.div key={group.category} variants={revealVariants} initial="hidden" whileInView="visible" viewport={VIEWPORT_OFFSET}
-          className="rounded-2xl border border-sawad-border bg-sawad-surface/50 p-6 hover:border-sawad-accent/40 transition-colors">
-          <h3 className="font-display font-bold text-lg mb-4">{group.category}</h3>
-          <ul className="space-y-3 text-sm text-sawad-muted">
-            {group.subjects.map((subject) => <li key={subject}>{subject}</li>)}
+        <motion.div
+          key={group.category}
+          variants={revealVariants}
+          className="group relative rounded-2xl border border-sawad-border bg-sawad-surface/50 p-6 flex flex-col gap-4 cursor-default
+                     hover:border-sawad-accent/40 hover:bg-sawad-surface
+                     transition-[border-color,background-color,translate,box-shadow] duration-300 ease-out
+                     hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(232,98,44,0.08)]"
+        >
+          {/* Accent top bar — revealed on hover */}
+          <span
+            aria-hidden="true"
+            className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-sawad-accent/0 via-sawad-accent to-sawad-accent/0
+                       scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center"
+          />
+
+          {/* Icon + subject count row */}
+          <div className="flex items-center justify-between">
+            <div className="w-11 h-11 rounded-xl bg-sawad-accent/10 border border-sawad-accent/20 flex items-center justify-center
+                            text-sawad-accent/70 group-hover:text-sawad-accent group-hover:bg-sawad-accent/15
+                            transition-colors duration-300">
+              {FUNDAMENTAL_ICONS[(group as { icon?: string }).icon ?? ''] ?? null}
+            </div>
+
+            <span className="inline-flex px-2.5 py-1 text-[10px] font-bold tracking-widest bg-white/5 border border-white/10 rounded-full text-sawad-muted
+                             group-hover:border-sawad-accent/20 group-hover:text-sawad-muted-strong transition-colors duration-300">
+              {group.subjects.length} SUBJECTS
+            </span>
+          </div>
+
+          {/* Title */}
+          <h4 className="font-display font-bold text-lg text-white tracking-tight group-hover:text-sawad-accent transition-colors duration-300">
+            {group.category}
+          </h4>
+
+          {/* Subjects with accent dots */}
+          <ul className="space-y-2.5 text-sm">
+            {group.subjects.map((subject) => (
+              <li key={subject} className="flex items-start gap-2.5 text-sawad-muted group-hover:text-sawad-muted-strong transition-colors duration-300">
+                <span aria-hidden="true" className="mt-[7px] w-1.5 h-1.5 rounded-full bg-sawad-accent/70 group-hover:bg-sawad-accent shrink-0 transition-colors duration-300" />
+                <span>{subject}</span>
+              </li>
+            ))}
           </ul>
         </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 }

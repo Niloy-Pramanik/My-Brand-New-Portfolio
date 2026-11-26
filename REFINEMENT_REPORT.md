@@ -12,13 +12,14 @@
 - Software Engineering & Applied AI identity, personalized three-paragraph About Me, career interests and consistent metadata.
 - Home-only profile sidebar; inner pages use the available content width. Layout stays full-width at every viewport, exactly like the original site (the previously inert `max-w-content` class was left inert by not registering a `--container-content` token, so the profile card does not shift right on displays wider than 1440px).
 - Dedicated Education and Contact pages, route-based navigation states and nested-project highlighting. Existing homepage anchor targets remain available.
-- UIU degree, Data Science major, current CGPA, February 2027 expected graduation, specialization courses and grouped CS fundamentals. No SSC/HSC results or individual course grades.
+- UIU degree, Data Science major, February 2027 expected graduation, specialization courses and grouped CS fundamentals. No CGPA display, SSC/HSC results or individual course grades.
 - Skills split into Core Programming, Backend (Java, Spring Boot, Flask, Node.js), Databases and APIs, academic foundations, AI/ML, familiar technologies and development tools, without proficiency bars. Home previews Core Programming, Backend and Databases and APIs with a View All Skills link to `/skill`.
 - Compact FlyRank AI Backend Engineer Intern entry (remote, ongoing) using only the supplied details.
 - Seven projects, with MERIT-RP, Goti and Coconut Station featured on Home. Reusable internal project details include implementation, features, confirmed contributions, limitations and repository/live links.
 - MERIT-RP research contribution, technical configuration and conference submission 2217, explicitly marked **Submitted — acceptance not confirmed**.
 - Academic achievements, project awards and certifications separated. SWE Lab and FYDP project-show certificates restored to the front of the Verified Learning list, and existing award certificate images and credential URLs retained.
 - Accurate project/certification/award counts; page-specific canonical, Open Graph and Twitter metadata.
+- Modernized secondary pages: skill groups render in anchored panels with category jump pills and skill counts; contact page uses contact-method cards, social icon buttons and a framed message form with accessible status feedback; research and CS fundamentals sections use accent labels, index numerals and hover treatments.
 
 ## Repository verification
 

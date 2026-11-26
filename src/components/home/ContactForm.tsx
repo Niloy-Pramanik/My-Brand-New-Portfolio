@@ -51,64 +51,78 @@ export function ContactForm() {
         initial="hidden"
         whileInView="visible"
         viewport={VIEWPORT_OFFSET}
-        className="flex flex-col gap-6 max-w-3xl"
+        className="max-w-3xl"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div>
-            <label htmlFor="contact-name" className="text-sm text-sawad-muted mb-2 block">Name</label>
-            <input
-              id="contact-name"
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="sawad-input"
-            />
-          </div>
-          <div>
-            <label htmlFor="contact-email" className="text-sm text-sawad-muted mb-2 block">Email</label>
-            <input
-              id="contact-email"
-              type="email"
-              name="email"
-              placeholder="Your@email.com"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="sawad-input"
-            />
+        <div className="relative rounded-2xl border border-sawad-border bg-sawad-surface/40 overflow-hidden">
+          <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-sawad-accent via-sawad-coral to-transparent" />
+          <div className="p-6 md:p-8 flex flex-col gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <label htmlFor="contact-name" className="text-sm text-sawad-muted mb-2 block">Name</label>
+                <input
+                  id="contact-name"
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="sawad-input"
+                />
+              </div>
+              <div>
+                <label htmlFor="contact-email" className="text-sm text-sawad-muted mb-2 block">Email</label>
+                <input
+                  id="contact-email"
+                  type="email"
+                  name="email"
+                  placeholder="Your@email.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="sawad-input"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="contact-message" className="text-sm text-sawad-muted mb-2 block">Message</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                placeholder="Message"
+                value={formData.message}
+                onChange={handleChange}
+                rows={5}
+                required
+                className="sawad-input resize-none"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="sawad-submit mt-2"
+            >
+              {isLoading
+                ? 'Sending...'
+                : status === 'success'
+                ? 'Message Sent'
+                : status === 'error'
+                ? 'Error — Try Again'
+                : 'Submit'}
+            </button>
+
+            <div aria-live="polite" className="min-h-5 text-sm">
+              {status === 'success' && (
+                <p className="text-sawad-lime">Thanks — your message has been sent.</p>
+              )}
+              {status === 'error' && (
+                <p className="text-red-400">Something went wrong. Please try again.</p>
+              )}
+            </div>
           </div>
         </div>
-
-        <div>
-          <label htmlFor="contact-message" className="text-sm text-sawad-muted mb-2 block">Message</label>
-          <textarea
-            id="contact-message"
-            name="message"
-            placeholder="Message"
-            value={formData.message}
-            onChange={handleChange}
-            rows={5}
-            required
-            className="sawad-input resize-none"
-          />
-        </div>
-
-        <button
-          type="submit"
-          disabled={isLoading}
-          className="sawad-submit mt-2"
-        >
-          {isLoading
-            ? 'Sending...'
-            : status === 'success'
-            ? 'Message Sent'
-            : status === 'error'
-            ? 'Error — Try Again'
-            : 'Submit'}
-        </button>
       </motion.form>
     </section>
   );

@@ -9,10 +9,88 @@ import { useReveal, VIEWPORT_OFFSET } from '@/lib/animations';
 
 const MotionLink = motion.create(Link);
 
-export function ProjectsGrid({ limit }: { limit?: number }) {
+export function ProjectsGrid({ limit, variant = 'list' }: { limit?: number; variant?: 'list' | 'cards' }) {
   const projects = limit ? PROJECTS.slice(0, limit) : PROJECTS;
   const hasMore = limit && PROJECTS.length > limit;
-  const { revealVariants } = useReveal();
+  const { revealVariants, containerVariants } = useReveal();
+
+  if (variant === 'cards') {
+    return (
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={VIEWPORT_OFFSET}
+        className="grid grid-cols-1 lg:grid-cols-2 gap-5"
+      >
+        {projects.map((project) => (
+          <MotionLink
+            key={project.id}
+            href={`/projects/${project.slug}`}
+            variants={revealVariants}
+            className="group relative flex flex-col rounded-2xl border border-sawad-border bg-sawad-surface/40 overflow-hidden cursor-default
+                       hover:border-sawad-accent/40
+                       transition-[border-color,translate,box-shadow] duration-300 ease-out
+                       hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(232,98,44,0.08)]"
+          >
+            {/* Accent top bar — revealed on hover */}
+            <span
+              aria-hidden="true"
+              className="absolute inset-x-0 top-0 h-[2px] z-10 bg-gradient-to-r from-sawad-accent/0 via-sawad-accent to-sawad-accent/0
+                         scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center"
+            />
+
+            {/* Preview image */}
+            <div className="relative aspect-video overflow-hidden bg-sawad-surface border-b border-sawad-border shrink-0">
+              {project.image ? (
+                <Image
+                  src={project.image}
+                  alt={`${project.title} project preview`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center">
+                  <span className="font-display font-black text-5xl text-white/10 group-hover:text-sawad-accent/30 transition-colors">
+                    {project.id}
+                  </span>
+                </div>
+              )}
+              <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm text-[10px] font-bold tracking-widest text-white/90">
+                {project.id}
+              </span>
+            </div>
+
+            {/* Body */}
+            <div className="flex flex-col flex-1 p-5 md:p-6">
+              <p className="text-xs text-sawad-accent mb-2">{project.category}</p>
+              <h3 className="font-display font-bold text-xl text-white group-hover:text-sawad-accent transition-colors">
+                {project.title}
+              </h3>
+              <p className="text-sm text-sawad-muted mt-2 line-clamp-2 flex-1">{project.description}</p>
+
+              <div className="flex flex-wrap gap-2 mt-4">
+                {project.tech.slice(0, 4).map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-2.5 py-1 text-[10px] md:text-xs font-medium bg-white/5 border border-white/10 rounded-full text-sawad-muted group-hover:border-sawad-accent/30 transition-colors"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <span className="inline-flex items-center gap-1.5 mt-5 text-xs font-bold text-sawad-muted group-hover:text-sawad-accent transition-colors">
+                View Details
+                <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </span>
+            </div>
+          </MotionLink>
+        ))}
+      </motion.div>
+    );
+  }
 
   return (
     <div className="flex flex-col">

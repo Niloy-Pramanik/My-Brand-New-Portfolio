@@ -249,3 +249,9 @@ body {
     transform: none;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ping {
+    animation: none;
+  }
+}

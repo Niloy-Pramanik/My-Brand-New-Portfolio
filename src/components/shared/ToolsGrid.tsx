@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { TOOLS } from '@/lib/data';
+import { TOOLS, slugify } from '@/lib/data';
 import { useReveal, VIEWPORT_OFFSET } from '@/lib/animations';
 import {
   SiC, SiCplusplus, SiPython, SiJavascript, SiTypescript,
@@ -57,37 +57,54 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export function ToolsGrid({ only }: { only?: string[] }) {
-  const { revealVariants } = useReveal();
+  const { revealVariants, containerVariants } = useReveal();
   const groups = only ? TOOLS.filter((group) => only.includes(group.category)) : TOOLS;
 
   return (
-    <div className="flex flex-col gap-12">
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={VIEWPORT_OFFSET}
+      className="flex flex-col gap-6 md:gap-8"
+    >
       {groups.map((group) => (
         <motion.div
           key={group.category}
+          id={slugify(group.category)}
           variants={revealVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={VIEWPORT_OFFSET}
-          className="flex flex-col gap-6"
+          className="scroll-mt-28 rounded-2xl border border-sawad-border bg-sawad-surface/40 p-6 md:p-8
+                     hover:border-sawad-accent/25 transition-colors duration-300"
         >
-          <h4 className="font-display font-bold text-2xl text-white">
-            {group.category}
-          </h4>
-          {group.description && <p className="text-sawad-muted -mt-3">{group.description}</p>}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-x-8 gap-y-6">
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3 min-w-0">
+              <span aria-hidden="true" className="w-8 h-px bg-gradient-to-r from-sawad-accent to-transparent shrink-0" />
+              <h4 className="font-display font-bold text-xl md:text-2xl text-white tracking-tight truncate">
+                {group.category}
+              </h4>
+            </div>
+            <span className="shrink-0 inline-flex px-2.5 py-1 text-[10px] font-bold tracking-widest bg-white/5 border border-white/10 rounded-full text-sawad-muted">
+              {group.items.length} {group.items.length === 1 ? 'SKILL' : 'SKILLS'}
+            </span>
+          </div>
+
+          {group.description && (
+            <p className="text-sm text-sawad-muted mt-2 md:pl-11">{group.description}</p>
+          )}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mt-6">
             {group.items.map((item) => (
               <div
                 key={item.name}
-                className="flex items-center gap-5 group cursor-pointer"
+                className="flex items-center gap-5 group cursor-default"
               >
                 {/* Icon Box */}
-                <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:-translate-y-1 shadow-lg group-hover:shadow-sawad-accent/20">
+                <div className="w-14 h-14 rounded-2xl bg-white border-2 border-transparent flex items-center justify-center shrink-0 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-sawad-accent group-hover:shadow-[0_8px_30px_rgba(232,98,44,0.25)]">
                   {iconMap[item.name] || <Box color="#000000" size={24} />}
                 </div>
-                
+
                 {/* Text */}
-                <div>
+                <div className="min-w-0">
                   <h3 className="font-display font-bold text-xl text-sawad-text tracking-tight group-hover:text-sawad-accent transition-colors">
                     {item.name}
                   </h3>
@@ -100,6 +117,6 @@ export function ToolsGrid({ only }: { only?: string[] }) {
           </div>
         </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 }

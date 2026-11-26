@@ -79,3 +79,12 @@ export function PageHeader({ line1, line2, description }: PageHeaderProps) {
     </motion.div>
   );
 }
+
+export function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-3 mb-6">
+      <span aria-hidden="true" className="w-8 h-px bg-gradient-to-r from-sawad-accent to-transparent" />
+      <h2 className="font-display text-xs md:text-sm font-bold tracking-[0.2em] uppercase text-sawad-accent">{children}</h2>
+    </div>
+  );
+}
