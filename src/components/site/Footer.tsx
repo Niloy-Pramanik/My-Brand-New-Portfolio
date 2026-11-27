@@ -60,7 +60,7 @@ export function Footer() {
 
       <div className={`pt-8 sm:pt-10 ${PADDING}`}>
         <svg
-          viewBox="0 0 1000 176"
+          viewBox="0 0 1000 123"
           className="block w-full overflow-hidden"
           role="img"
           aria-label={PROFILE.name}
@@ -74,11 +74,11 @@ export function Footer() {
           </defs>
           <text
             x="500"
-            y="140"
+            y="98"
             textAnchor="middle"
-            textLength="980"
+            textLength="686"
             lengthAdjust="spacingAndGlyphs"
-            fontSize="150"
+            fontSize="105"
             className="font-display font-black"
             fill="url(#footer-wordmark-gradient)"
           >
